@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{54
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PagoEfectivo.Promocion", "src\services\PagoEfectivo.Api\PagoEfectivo.Api.csproj", "{5F6D34AF-2946-4AD0-BCA3-CECCD544B51F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A29676E2-6025-4DA0-81EC-0B7AAD9F3C76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PagoEfectivo.UnitTest", "test\PagoEfectivo.UnitTest\PagoEfectivo.UnitTest.csproj", "{77269AF8-D7B0-49C2-B815-703CBB874E40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,9 +26,14 @@ Global
 		{5F6D34AF-2946-4AD0-BCA3-CECCD544B51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F6D34AF-2946-4AD0-BCA3-CECCD544B51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F6D34AF-2946-4AD0-BCA3-CECCD544B51F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77269AF8-D7B0-49C2-B815-703CBB874E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77269AF8-D7B0-49C2-B815-703CBB874E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77269AF8-D7B0-49C2-B815-703CBB874E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77269AF8-D7B0-49C2-B815-703CBB874E40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{540C0620-CE18-4814-BF6A-D2F70091CDA2} = {E0C29BC8-2E50-4D50-9D81-C7869674E649}
 		{5F6D34AF-2946-4AD0-BCA3-CECCD544B51F} = {540C0620-CE18-4814-BF6A-D2F70091CDA2}
+		{77269AF8-D7B0-49C2-B815-703CBB874E40} = {A29676E2-6025-4DA0-81EC-0B7AAD9F3C76}
 	EndGlobalSection
 EndGlobal

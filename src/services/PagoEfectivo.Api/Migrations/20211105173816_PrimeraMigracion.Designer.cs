@@ -10,7 +10,7 @@ using PagoEfectivo.Api.Infra;
 namespace PagoEfectivo.Api.Migrations
 {
     [DbContext(typeof(PagoEfectivoContext))]
-    [Migration("20211105170958_PrimeraMigracion")]
+    [Migration("20211105173816_PrimeraMigracion")]
     partial class PrimeraMigracion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

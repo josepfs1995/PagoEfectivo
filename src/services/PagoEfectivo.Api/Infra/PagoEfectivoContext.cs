@@ -6,9 +6,12 @@ namespace PagoEfectivo.Api.Infra
 {
     public class PagoEfectivoContext : DbContext
     {
-        public DbSet<Estado> Estado { get; set; }
-        public DbSet<Promocion> Promocion { get; set; }
+        public virtual DbSet<Estado> Estado { get; set; }
+        public virtual DbSet<Promocion> Promocion { get; set; }
+        public PagoEfectivoContext()
+        {
 
+        }
         public PagoEfectivoContext(DbContextOptions<PagoEfectivoContext> options) : base(options)
         {
         }
@@ -21,9 +24,9 @@ namespace PagoEfectivo.Api.Infra
                 .Where(p => p.ClrType == typeof(string))
                 .ToList()
                 .ForEach(p => p.SetColumnType("varchar(100)"));
-            
+
             modelBuilder.Seed();
-            
+
             base.OnModelCreating(modelBuilder);
         }
     }
