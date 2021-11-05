@@ -38,6 +38,18 @@ namespace PagoEfectivo.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PagoEfectivo.Promocion", Version = "v1" });
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
+
             services.AddDbContext<PagoEfectivoContext>(option => option.UseNpgsql(Configuration.GetConnectionString("ConBD")));
 
             services.AddScoped<IPromocionAppService, PromocionAppService>();
@@ -61,6 +73,8 @@ namespace PagoEfectivo.Api
 
             app.UseAuthorization();
 
+            app.UseCors("AllowAll");
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

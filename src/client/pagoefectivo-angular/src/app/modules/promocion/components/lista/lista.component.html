@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Codigo</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of promociones">
+          <td>{{item.codigo}}</td>
+          <td>{{item.nombre}}</td>
+          <td>{{item.email}}</td>
+          <td>
+            <span  class="btn btn-badge btn-primary" *ngIf="item.estado == 'GENERADO'">
+              {{item.estado}}
+            </span>
+            <span  class="btn btn-badge btn-warning" *ngIf="item.estado != 'GENERADO'">
+              {{item.estado}}
+            </span>
+
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
