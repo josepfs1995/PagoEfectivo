@@ -28,6 +28,26 @@
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach"
+        },
+        {
+            "name": "Docker .NET Core Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "netCore": {
+                "appProject": "${workspaceFolder}/src/services/PagoEfectivo.Api/PagoEfectivo.Api.csproj"
+            }
+        },
+        {
+            "name": "Docker Node.js Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "platform": "node",
+            "node": {
+                "package": "${workspaceFolder}/src/client/pagoefectivo-angular/package.json",
+                "localRoot": "${workspaceFolder}/src/client/pagoefectivo-angular"
+            }
         }
     ]
 }

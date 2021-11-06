@@ -50,10 +50,13 @@ namespace PagoEfectivo.Api
                     });
             });
 
-            services.AddDbContext<PagoEfectivoContext>(option => option.UseNpgsql(Configuration.GetConnectionString("ConBD")));
+            services.AddDbContext<PagoEfectivoContext>(option =>
+            {
+                option.UseNpgsql(Configuration.GetConnectionString("ConBD"));
+            });
 
             services.AddScoped<IPromocionAppService, PromocionAppService>();
-            
+
             services.AddMediatR(typeof(CommandHandler).Assembly);
         }
 
@@ -63,9 +66,10 @@ namespace PagoEfectivo.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PagoEfectivo.Promocion v1"));
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PagoEfectivo.Promocion v1"));
 
             app.UseHttpsRedirection();
 
@@ -74,11 +78,12 @@ namespace PagoEfectivo.Api
             app.UseAuthorization();
 
             app.UseCors("AllowAll");
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
         }
+       
     }
 }

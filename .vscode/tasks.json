@@ -37,6 +37,80 @@
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build: debug",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "pagoefectivo:dev",
+                "target": "base",
+                "dockerfile": "${workspaceFolder}/src/services/PagoEfectivo.Api/Dockerfile",
+                "context": "${workspaceFolder}",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/src/services/PagoEfectivo.Api/PagoEfectivo.Api.csproj"
+            }
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build: release",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "pagoefectivo:latest",
+                "dockerfile": "${workspaceFolder}/src/services/PagoEfectivo.Api/Dockerfile",
+                "context": "${workspaceFolder}",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/src/services/PagoEfectivo.Api/PagoEfectivo.Api.csproj"
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: debug",
+            "dependsOn": [
+                "docker-build"
+            ],
+            "dockerRun": {
+                "env": {
+                    "DEBUG": "*",
+                    "NODE_ENV": "development"
+                }
+            },
+            "node": {
+                "package": "${workspaceFolder}/src/client/pagoefectivo-angular/package.json",
+                "enableDebugging": true
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: release",
+            "dependsOn": [
+                "docker-build"
+            ],
+            "platform": "node",
+            "node": {
+                "package": "${workspaceFolder}/src/client/pagoefectivo-angular/package.json"
+            }
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build",
+            "platform": "node",
+            "dockerBuild": {
+                "dockerfile": "${workspaceFolder}/src/client/pagoefectivo-angular/Dockerfile",
+                "context": "${workspaceFolder}/src/client/pagoefectivo-angular",
+                "pull": true
+            },
+            "node": {
+                "package": "${workspaceFolder}/src/client/pagoefectivo-angular/package.json"
+            }
         }
     ]
 }
