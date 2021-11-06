@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  postgresdb:
+    image: postgres
+    container_name: postgresdb
+    environment:
+      - POSTGRES_USER=develop
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=develop
+    ports:
+      - 5432:5432
+  api:
+    image: pagoefectivo
+    container_name: pagoefectivo-api
+    build: 
+      context: src/services/PagoEfectivo.Api
+      dockerfile: ./Dockerfile
+    ports:
+      - 5000:5000
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:5000
+    depends_on:
+      - postgresdb
+  pagoefectivoangular:
+    image: pagoefectivoangular
+    container_name: pagoefectivo-angular
+    build:
+      context: src/client/pagoefectivo-angular
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 5001:80
